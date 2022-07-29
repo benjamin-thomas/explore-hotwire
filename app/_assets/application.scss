@@ -1,8 +1,15 @@
+// Mixins
 @import "mixins/media";
 
+// Configuration
 @import "config/variables";
 @import "config/reset";
 
+// Layouts
+@import "layouts/container";
+@import "layouts/header";
+
+// Components
 @import "components/btn";
 @import "components/quote";
 @import "components/form";

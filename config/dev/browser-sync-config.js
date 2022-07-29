@@ -9,7 +9,7 @@ module.exports = {
     },
     port: 4000,
     ui: { port: 4001 },
-    files: ['app/assets', 'app/views'],
+    files: ['app/assets', 'app/_assets', 'app/views'],
     open: false,
     notify: false,
     snippetOptions: {
