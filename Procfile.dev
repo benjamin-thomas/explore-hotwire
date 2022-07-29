@@ -1,4 +1,4 @@
 web: bin/rails server -p 3000
 tailwind: bin/rails tailwindcss:watch
 sass: sass --watch ./app/_assets/application.scss:./app/assets/stylesheets/ui/build/main.css --sourcemap=inline
-browser-sync: browser-sync start --port 4000 --ui-port 4001 --proxy localhost:3000 --no-open --no-notify --watch --files ./app
+browser-sync: browser-sync start --config ./config/dev/browser-sync-config.js
