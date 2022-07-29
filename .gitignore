@@ -37,5 +37,5 @@
 /app/assets/builds/*
 !/app/assets/builds/.keep
 .sass-cache/
-/app/assets/stylesheets/application.sass.css
-/app/assets/stylesheets/application.sass.css.map
+/app/assets/stylesheets/ui/dist/
+/app/assets/stylesheets/ui/build/
