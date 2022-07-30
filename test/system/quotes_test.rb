@@ -48,7 +48,7 @@ class QuotesTest < ApplicationSystemTestCase
     assert_no_text @top_quote.name
   end
 
-  test "append and destroy with turbo" do
+  test "create/delete reflects in realtime with turbo" do
     bg_quote_name = "Background quote!"
 
     visit quotes_path
@@ -59,6 +59,21 @@ class QuotesTest < ApplicationSystemTestCase
 
     quote.destroy!
     assert_no_text bg_quote_name
+  end
+
+  test "create/update reflects in realtime with turbo" do
+    bg_quote_name = "Background quote!"
+    bg_quote_name_changed = "CHANGED!"
+
+    visit quotes_path
+    assert_no_text bg_quote_name
+
+    quote = Quote.create!(name: bg_quote_name)
+    assert_text bg_quote_name
+
+    quote.update!(name: bg_quote_name_changed)
+    assert_no_text bg_quote_name
+    assert_text bg_quote_name_changed
   end
 
 end
