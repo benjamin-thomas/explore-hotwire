@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -e
+
+export PGUSER=postgres
+export PGPASSWORD=password
+export PGHOST=pg.tailwind-app.test
+export PGDATABASE=dev
+
+exec psql
