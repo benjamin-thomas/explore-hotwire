@@ -48,4 +48,17 @@ class QuotesTest < ApplicationSystemTestCase
     assert_no_text @top_quote.name
   end
 
+  test "append and destroy with turbo" do
+    bg_quote_name = "Background quote!"
+
+    visit quotes_path
+    assert_no_text bg_quote_name
+
+    quote = Quote.create!(name: bg_quote_name)
+    assert_text bg_quote_name
+
+    quote.destroy!
+    assert_no_text bg_quote_name
+  end
+
 end

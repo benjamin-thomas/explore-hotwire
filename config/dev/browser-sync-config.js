@@ -12,6 +12,7 @@ module.exports = {
     files: ['app/assets', 'app/_assets', 'app/views'],
     open: false,
     notify: false,
+    ws: true, // Only one browser tab can connect to port 4000, otherwise turbo stream messages will be duplicated.
     snippetOptions: {
         rule: {
             // Add to head as turbo replaces body.
