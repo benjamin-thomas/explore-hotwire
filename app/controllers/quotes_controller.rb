@@ -1,5 +1,6 @@
 class QuotesController < ApplicationController
   before_action :set_quote, only: [:show, :edit, :update, :destroy]
+  before_action :set_maybe_top, only: [:new, :edit]
 
   def index
     @quotes = Quote.by_created_at_desc
@@ -18,7 +19,12 @@ class QuotesController < ApplicationController
     if @quote.save
       respond_to do |fmt|
         fmt.html { redirect_to quotes_path, notice: "Quote was successfully created." }
-        fmt.turbo_stream
+        fmt.turbo_stream do
+          if request.headers['Turbo-Frame'].nil?
+            redirect_to quotes_path, notice: "Quote was successfully created."
+            return
+          end
+        end
       end
 
     else
@@ -50,6 +56,15 @@ class QuotesController < ApplicationController
 
     def set_quote
       @quote = Quote.find(params[:id])
+    end
+
+    def set_maybe_top
+      # User opened /quote/new or /quote/123/edit via ctrl+click and has javascript turned on
+      @maybe_top = if request.headers['Turbo-Frame'].nil?
+                     { turbo_frame: "_top" }
+                   else
+                     {}
+                   end
     end
 
     def quote_params

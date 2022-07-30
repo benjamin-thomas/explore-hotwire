@@ -7,5 +7,10 @@
   <% end %>
 
   <%= f.input :name, input_html: { autofocus: true } %>
-  <%= f.submit class: "btn btn--secondary" %>
+
+  <%= link_to "Cancel", quotes_path,
+              data: { **@maybe_top },
+              class: "btn btn--light" %>
+
+  <%= f.submit class: "btn btn--secondary", data: { **@maybe_top } %>
 <% end %>
