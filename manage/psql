@@ -7,4 +7,4 @@ export PGPASSWORD=password
 export PGHOST=pg.tailwind-app.test
 export PGDATABASE=dev
 
-exec psql
+exec psql "$@"
