@@ -3,7 +3,6 @@ class QuotesController < ApplicationController
   before_action :set_maybe_top, only: [:new, :edit]
 
   def index
-    flash.now[:notice] = "Hello, this is a test!!"
     @quotes = current_company.quotes.by_created_at_desc
   end
 
@@ -17,19 +16,14 @@ class QuotesController < ApplicationController
   def create
     @quote = current_company.quotes.build(quote_params)
 
-    if @quote.save
-      respond_to do |fmt|
-        fmt.html { redirect_to quotes_path, notice: "Quote was successfully created." }
-        fmt.turbo_stream do
-          if request.headers['Turbo-Frame'].nil?
-            redirect_to quotes_path, notice: "Quote was successfully created."
-            return
-          end
-        end
-      end
-
-    else
+    if !@quote.save
       render :new, status: :unprocessable_entity
+      return
+    end
+
+    respond_to do |fmt|
+      fmt.html { redirect_to quotes_path, notice: "Quote was successfully created." }
+      fmt.turbo_stream { flash.now[:notice] = "Quote was successfully created." }
     end
   end
 
@@ -37,10 +31,14 @@ class QuotesController < ApplicationController
   end
 
   def update
-    if @quote.update(quote_params)
-      redirect_to quotes_path, notice: "Quote was successfully updated."
-    else
+    if !@quote.update(quote_params)
       render :edit, status: :unprocessable_entity
+      return
+    end
+
+    respond_to do |fmt|
+      fmt.html { redirect_to quotes_path, notice: "Quote was successfully updated." }
+      fmt.turbo_stream { flash.now[:notice] = "Quote was successfully updated." }
     end
   end
 
@@ -49,7 +47,7 @@ class QuotesController < ApplicationController
 
     respond_to do |fmt|
       fmt.html { redirect_to quotes_path, notice: "Quote was successfully destroyed." }
-      fmt.turbo_stream
+      fmt.turbo_stream { flash.now[:notice] = "Quote was successfully destroyed." }
     end
   end
 
