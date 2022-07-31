@@ -223,4 +223,23 @@ a {
 .turbo-progress-bar {
   background: linear-gradient(to right, var(--color-primary), var(--color-primary-rotate)); }
 
+.navbar {
+  display: flex;
+  align-items: center;
+  box-shadow: var(--shadow-large);
+  padding: var(--space-xs) var(--space-m);
+  margin-bottom: var(--space-xxl);
+  background-color: var(--color-white); }
+  .navbar__brand {
+    font-weight: bold;
+    font-size: var(--font-size-xl);
+    color: var(--color-text-header); }
+  .navbar__name {
+    font-weight: bold;
+    margin-left: auto;
+    margin-right: var(--space-s);
+    color: var(--color-text-header); }
+  .navbar__right {
+    margin-left: auto; }
+
 /*# sourceMappingURL=main.css.map */
