@@ -16,13 +16,34 @@
     <%= f.button :submit, "Log in", class: 'btn btn--primary' %>
 
     <% if Rails.env.development? %>
-      <%= f.button :button, "Test",
+      <br>
+      <br>
+      <%= f.button :button, "Accountant",
                    type: :button,
                    onclick: "
                    document.getElementById('user_email').value='accountant@kpmg.com';
                    document.getElementById('user_password').value='password';
                    ",
-                   style: 'float:right',
+                   class: 'btn btn--secondary' %>
+
+      <br>
+      <br>
+      <%= f.button :button, "Manager",
+                   type: :button,
+                   onclick: "
+                   document.getElementById('user_email').value='manager@kpmg.com';
+                   document.getElementById('user_password').value='password';
+                   ",
+                   class: 'btn btn--secondary' %>
+
+      <br>
+      <br>
+      <%= f.button :button, "Eavesdropper",
+                   type: :button,
+                   onclick: "
+                   document.getElementById('user_email').value='eavesdropper@pwc.com';
+                   document.getElementById('user_password').value='password';
+                   ",
                    class: 'btn btn--secondary' %>
     <% end %>
   </div>
