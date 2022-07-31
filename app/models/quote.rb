@@ -1,7 +1,7 @@
 class Quote < ApplicationRecord
   belongs_to :company
 
-  broadcasts_to ->(_) { "quotes" }, inserts_by: :prepend
+  broadcasts_to ->(quote) { [quote.company, "quotes"] }, inserts_by: :prepend
 
   validates :name, presence: true
 
