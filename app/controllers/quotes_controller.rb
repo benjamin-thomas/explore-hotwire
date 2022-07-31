@@ -3,6 +3,7 @@ class QuotesController < ApplicationController
   before_action :set_maybe_top, only: [:new, :edit]
 
   def index
+    flash.now[:notice] = "Hello, this is a test!!"
     @quotes = current_company.quotes.by_created_at_desc
   end
 
