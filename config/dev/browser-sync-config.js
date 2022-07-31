@@ -2,10 +2,9 @@
 module.exports = {
     proxy: {
         target: "localhost:3000",
-        proxyReq: [
-            // Authenticity token form submissions.
-            (proxyReq) => proxyReq.setHeader('X-Forwarded-Host', 'localhost:4000')
-        ],
+        proxyOptions: {
+            xfwd: true // CSRF protection is satisfied on localhost + local IP address with this param
+        },
     },
     port: 4000,
     ui: { port: 4001 },
