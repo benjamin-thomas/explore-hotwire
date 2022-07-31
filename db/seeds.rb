@@ -1,9 +1,19 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
-puts "\n== Seeding the database with fixtures =="
-system("bin/rails db:fixtures:load")
+def seed_for_development!
+  fail if !Rails.env.development?
+
+  print "Reset the development database? (y/N) "
+  answer = STDIN.gets.chomp
+  if answer.upcase != "Y"
+    warn "Abort!"
+    exit 0
+  end
+  warn "--> Recreating the database and seeding from fixtures..."
+  system "bin/rails db:drop db:create db:migrate db:fixtures:load"
+end
+
+case Rails.env
+when 'development'
+  seed_for_development!
+else
+  warn 'NOOP!'
+end
