@@ -1,14 +1,11 @@
 def seed_for_development!
   fail if !Rails.env.development?
 
-  print "Reset the development database? (y/N) "
-  answer = STDIN.gets.chomp
-  if answer.upcase != "Y"
-    warn "Abort!"
-    exit 0
-  end
-  warn "--> Recreating the database and seeding from fixtures..."
-  system "bin/rails db:drop db:create db:migrate db:fixtures:load"
+  warn "--> Recreating the database..."
+  system "./bin/rails db:drop db:create db:migrate"
+
+  warn "--> Seeding from fixtures..." # must happen in another process, after db:migrate
+  system "./bin/rails db:fixtures:load"
 end
 
 case Rails.env
