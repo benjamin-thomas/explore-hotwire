@@ -3,6 +3,8 @@ require "application_system_test_case"
 class QuotesTest < ApplicationSystemTestCase
 
   setup do
+    @accountant = users(:accountant)
+    login_as @accountant
     @top_quote = quotes(:third) # at the top of the page
   end
 
@@ -54,7 +56,7 @@ class QuotesTest < ApplicationSystemTestCase
     visit quotes_path
     assert_no_text bg_quote_name
 
-    quote = Quote.create!(name: bg_quote_name)
+    quote = @accountant.company.quotes.create!(name: bg_quote_name)
     assert_text bg_quote_name
 
     quote.destroy!
@@ -68,7 +70,7 @@ class QuotesTest < ApplicationSystemTestCase
     visit quotes_path
     assert_no_text bg_quote_name
 
-    quote = Quote.create!(name: bg_quote_name)
+    quote = @accountant.company.quotes.create!(name: bg_quote_name)
     assert_text bg_quote_name
 
     quote.update!(name: bg_quote_name_changed)

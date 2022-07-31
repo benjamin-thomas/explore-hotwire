@@ -3,7 +3,7 @@ class QuotesController < ApplicationController
   before_action :set_maybe_top, only: [:new, :edit]
 
   def index
-    @quotes = Quote.by_created_at_desc
+    @quotes = current_company.quotes.by_created_at_desc
   end
 
   def show
@@ -14,7 +14,7 @@ class QuotesController < ApplicationController
   end
 
   def create
-    @quote = Quote.new(quote_params)
+    @quote = current_company.quotes.build(quote_params)
 
     if @quote.save
       respond_to do |fmt|
@@ -55,7 +55,7 @@ class QuotesController < ApplicationController
   private
 
     def set_quote
-      @quote = Quote.find(params[:id])
+      @quote = current_company.quotes.find(params[:id])
     end
 
     def set_maybe_top
