@@ -1,0 +1,10 @@
+<div class="empty-state empty-state--only-child"
+     data-controller="quote">
+  <div class="empty-state__text">
+    You don't have any quotes yet!
+  </div>
+
+  <%= link_to "Add quote", new_quote_path,
+              data: { turbo_frame: "new_quote" },
+              class: "btn btn--primary" %>
+</div>
