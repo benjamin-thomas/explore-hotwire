@@ -1,1 +1,4 @@
+<% if current_company.quotes.none? %>
+  <%= turbo_stream.update "new_quote", partial: "quotes/empty_state" %>
+<% end %>
 <%= turbo_stream_flash %>
