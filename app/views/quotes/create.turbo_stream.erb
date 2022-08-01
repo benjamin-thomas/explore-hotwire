@@ -1,2 +1,7 @@
-<%= turbo_stream.update "new_quote", "" %>
 <%= turbo_stream_flash %>
+
+<%=
+  # FIXME: I should really broadcast this empty state.
+  #        Otherwise, the other company users still have the empty state + one quote.
+  turbo_stream.update "new_quote", "" %>
+
