@@ -1,5 +1,6 @@
 class Quote < ApplicationRecord
   belongs_to :company
+  has_many :bundles, dependent: :destroy
 
   broadcasts_to ->(quote) { [quote.company, "quotes"] }, inserts_by: :prepend
 
