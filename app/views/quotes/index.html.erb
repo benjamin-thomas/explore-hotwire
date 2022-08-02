@@ -11,7 +11,7 @@
   </div>
 
   <%= turbo_frame_tag "new_quote" do %>
-    <%= render partial: "quotes/empty_state" %>
+    <%= render partial: "quotes/empty_state" if current_company.quotes.none? %>
   <% end %>
 
   <%= turbo_frame_tag "quotes" do %>

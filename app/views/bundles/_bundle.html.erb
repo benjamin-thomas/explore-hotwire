@@ -1,0 +1,19 @@
+<div class="bundle">
+  <div class="bundle__header">
+    <h2 class="bundle__title">
+      <%= l(bundle.ship_on, format: :long) %>
+    </h2>
+
+    <div class="bundle__actions">
+      <%= button_to "Delete",
+                    quote_bundle_path(quote, bundle),
+                    method: :delete,
+                    form: { data: { turbo_confirm: "Are you sure?" } },
+                    class: "btn btn--light" %>
+
+      <%= link_to "Edit",
+                  edit_quote_bundle_path(quote, bundle),
+                  class: "btn btn--light" %>
+    </div>
+  </div>
+</div>

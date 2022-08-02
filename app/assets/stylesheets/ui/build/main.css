@@ -281,4 +281,21 @@ a {
     .empty-state--only-child:only-child {
       display: revert; }
 
+.bundle {
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-xxs); }
+  .bundle__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-xs); }
+  .bundle__title {
+    font-size: var(--font-size-xl); }
+    @media (min-width: 50rem) {
+      .bundle__title {
+        font-size: var(--font-size-xxl); } }
+  .bundle__actions {
+    display: flex;
+    gap: var(--space-xs); }
+
 /*# sourceMappingURL=main.css.map */

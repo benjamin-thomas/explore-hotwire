@@ -1,12 +1,13 @@
 class QuotesController < ApplicationController
   before_action :set_quote, only: [:show, :edit, :update, :destroy]
-  before_action :set_maybe_top, only: [:new, :edit]
+  before_action :set_maybe_top, only: [:new, :edit, :create]
 
   def index
-    @quotes = current_company.quotes.by_created_at_desc
+    @quotes = current_company.quotes.order_by_created_at_desc
   end
 
   def show
+    @bundles = @quote.bundles.order_by_ship_on_asc
   end
 
   def new

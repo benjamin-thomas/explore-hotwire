@@ -1,0 +1,26 @@
+@import "../mixins/media";
+
+.bundle {
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-xxs);
+
+  &__header {
+    display: flex;
+    align-items: center; // align vertically
+    justify-content: space-between; // child1 <-- --> child2
+    gap: var(--space-xs);
+  }
+
+  &__title {
+    font-size: var(--font-size-xl);
+
+    @include media(tabletAndUp) {
+      font-size: var(--font-size-xxl);
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: var(--space-xs);
+  }
+}

@@ -17,3 +17,19 @@ SimpleForm.setup do |config|
   config.boolean_style                   = :nested
   config.boolean_label_class             = "form__checkbox-label"
 end
+
+#########################################
+# Below is ugly, but it works!
+# Ref: https://stackoverflow.com/questions/29075404/how-can-i-generate-inputtype-date-with-simple-form
+# Also see: https://github.com/heartcombo/simple_form/issues/1739
+#########################################
+
+# Use html5 date inputs by default, use html5: false to force
+# the use of multiple selects
+class DateTimeInput < SimpleForm::Inputs::DateTimeInput
+  private
+
+    def use_html5_inputs?
+      input_options.fetch(:html5, true)
+    end
+end

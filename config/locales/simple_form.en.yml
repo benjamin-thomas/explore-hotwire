@@ -3,9 +3,20 @@ en:
     placeholders:
       quote:
         name: Name of your quote
-      labels:
-        quote:
-          name: Name
+    labels:
+      quote:
+        name: Name
+      bundle:
+        ship_on: Ship on
+
+  helpers:
+    submit:
+      quote:
+        create: Create quote
+        update: Update quote
+      bundle:
+        create: Create bundle
+        update: Update bundle
 
     "yes": 'Yes'
     "no": 'No'
@@ -36,8 +47,3 @@ en:
     # prompts:
     #   defaults:
     #     age: 'Select your age'
-    helpers:
-      submit:
-        quote:
-          create: Create quote
-          update: Update quote

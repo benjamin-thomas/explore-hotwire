@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :quotes
+  resources :quotes do
+    resources :bundles, except: [:index, :show]
+  end
 end
