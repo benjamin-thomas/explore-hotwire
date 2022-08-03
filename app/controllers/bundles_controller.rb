@@ -14,7 +14,11 @@ class BundlesController < ApplicationController
       return
     end
 
-    redirect_to quote_path(@quote), notice: "Bundle was successfully created."
+    respond_to do |fmt|
+      fmt.html { redirect_to quote_path(@quote), notice: "Bundle was successfully created." }
+      fmt.turbo_stream { flash.now[:notice] = "Bundle was successfully created." }
+    end
+
   end
 
   def edit
@@ -26,13 +30,19 @@ class BundlesController < ApplicationController
       return
     end
 
-    redirect_to quote_path(@quote), notice: "Bundle updated successfully."
+    respond_to do |fmt|
+      fmt.html { redirect_to quote_path(@quote), notice: "Bundle updated successfully." }
+      fmt.turbo_stream { flash.now[:notice] = "Bundle was successfully updated." }
+    end
   end
 
   def destroy
     @bundle.destroy
 
-    redirect_to quote_path(@quote), notice: "Bundle destroyed successfully."
+    respond_to do |fmt|
+      fmt.html { redirect_to quote_path(@quote), notice: "Bundle destroyed successfully." }
+      fmt.turbo_stream { flash.now[:notice] = "Bundle was successfully destroyed." }
+    end
   end
 
   private

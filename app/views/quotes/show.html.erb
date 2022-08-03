@@ -13,5 +13,7 @@
 
   <%= turbo_frame_tag "new_bundle" %>
 
-  <%= render @bundles, quote: @quote %>
+  <%= turbo_frame_tag "bundles" do %>
+    <%= render @bundles %>
+  <% end %>
 </main>

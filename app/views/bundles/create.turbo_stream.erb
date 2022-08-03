@@ -1,0 +1,12 @@
+<%= turbo_stream.update "new_bundle", "" %>
+
+<% if (prev = @bundle.prev) %>
+  <%#= turbo_stream.after prev do %>
+    <%#= render @bundle %>
+  <%# end %>
+  <%= turbo_stream.after prev, @bundle %>
+<% else %>
+  <%= turbo_stream.prepend "bundles", @bundle %>
+<% end %>
+
+<%= turbo_stream_flash %>

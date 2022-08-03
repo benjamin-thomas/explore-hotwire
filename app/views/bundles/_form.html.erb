@@ -4,7 +4,14 @@
 
   <%= maybe_form_errors_for(bundle) %>
 
-  <%= f.input :ship_on, input_html: { autofocus: true } %>
+  <%
+    extra = {}
+    if Rails.env.development? && action_name == "new"
+      extra = { value: Date.today }
+    end
+  %>
+
+  <%= f.input :ship_on, input_html: { autofocus: true, **extra } %>
 
   <%= link_to "Cancel", quote_path(quote), class: "btn btn--light" %>
   <%= f.submit class: "btn btn--secondary" %>
