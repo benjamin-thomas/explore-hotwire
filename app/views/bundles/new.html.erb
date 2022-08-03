@@ -6,6 +6,6 @@
   </div>
 
   <%= turbo_frame_tag "new_bundle" do %>
-    <%= render "form", quote: @quote, bundle: @bundle %>
+    <%= render "form", bundle: @bundle, path: quote_bundles_path(@bundle.quote) %>
   <% end %>
 </main>

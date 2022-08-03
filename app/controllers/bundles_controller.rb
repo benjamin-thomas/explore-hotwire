@@ -1,5 +1,5 @@
 class BundlesController < ApplicationController
-  before_action :set_quote
+  before_action :set_quote, only: [:new, :create]
   before_action :set_bundle, only: [:edit, :update, :destroy]
 
   def new
@@ -15,7 +15,7 @@ class BundlesController < ApplicationController
     end
 
     respond_to do |fmt|
-      fmt.html { redirect_to quote_path(@quote), notice: "Bundle was successfully created." }
+      fmt.html { redirect_to quote_path(@bundle.quote), notice: "Bundle was successfully created." }
       fmt.turbo_stream { flash.now[:notice] = "Bundle was successfully created." }
     end
 
@@ -31,7 +31,7 @@ class BundlesController < ApplicationController
     end
 
     respond_to do |fmt|
-      fmt.html { redirect_to quote_path(@quote), notice: "Bundle updated successfully." }
+      fmt.html { redirect_to quote_path(@bundle.quote), notice: "Bundle updated successfully." }
       fmt.turbo_stream { flash.now[:notice] = "Bundle was successfully updated." }
     end
   end
@@ -40,7 +40,7 @@ class BundlesController < ApplicationController
     @bundle.destroy
 
     respond_to do |fmt|
-      fmt.html { redirect_to quote_path(@quote), notice: "Bundle destroyed successfully." }
+      fmt.html { redirect_to quote_path(@bundle.quote), notice: "Bundle destroyed successfully." }
       fmt.turbo_stream { flash.now[:notice] = "Bundle was successfully destroyed." }
     end
   end
@@ -52,7 +52,7 @@ class BundlesController < ApplicationController
     end
 
     def set_bundle
-      @bundle = @quote.bundles.find(params.fetch(:id))
+      @bundle = Bundle.find(params.fetch(:id))
     end
 
     def bundle_params

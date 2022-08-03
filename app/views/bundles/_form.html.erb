@@ -1,5 +1,5 @@
 <%= #noinspection RubyResolve
-    simple_form_for [quote, bundle],
+    simple_form_for bundle, url: path,
                     html: { class: "form bundle" } do |f| %>
 
   <%= maybe_form_errors_for(bundle) %>
@@ -13,6 +13,6 @@
 
   <%= f.input :ship_on, input_html: { autofocus: true, **extra } %>
 
-  <%= link_to "Cancel", quote_path(quote), class: "btn btn--light" %>
+  <%= link_to "Cancel", quote_path(bundle.quote), class: "btn btn--light" %>
   <%= f.submit class: "btn btn--secondary" %>
 <% end %>

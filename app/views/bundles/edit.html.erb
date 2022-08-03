@@ -1,11 +1,11 @@
 <main class="container">
-  <%= link_to sanitize("&larr; Back to quote"), quote_path(@quote) %>
+  <%= link_to sanitize("&larr; Back to quote"), quote_path(@bundle.quote) %>
 
   <div class="header">
     <h1>Edit bundle</h1>
   </div>
 
   <%= turbo_frame_tag @bundle do %>
-    <%= render "form", quote: @quote, bundle: @bundle %>
+    <%= render "form", bundle: @bundle, path: bundle_path(@bundle) %>
   <% end %>
 </main>

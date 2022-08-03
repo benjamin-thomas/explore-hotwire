@@ -14,13 +14,13 @@
 
       <div class="bundle__actions">
         <%= button_to "Delete",
-                      quote_bundle_path(bundle.quote, bundle),
+                      bundle_path(bundle),
                       method: :delete,
                       **extra,
                       class: "btn btn--light" %>
 
         <%= link_to "Edit",
-                    edit_quote_bundle_path(bundle.quote, bundle),
+                    edit_bundle_path(bundle),
                     class: "btn btn--light" %>
       </div>
     </div>
