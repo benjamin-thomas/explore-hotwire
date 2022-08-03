@@ -1,3 +1,11 @@
+require "test_helper"
+
+class UserTest < ActiveSupport::TestCase
+  test "name" do
+    assert_equal "Accountant", users(:accountant).name
+  end
+end
+
 # == Schema Information
 #
 # Table name: users
@@ -22,10 +30,3 @@
 #
 #  fk_rails_...  (company_id => companies.id)
 #
-require "test_helper"
-
-class UserTest < ActiveSupport::TestCase
-  test "name" do
-    assert_equal "Accountant", users(:accountant).name
-  end
-end

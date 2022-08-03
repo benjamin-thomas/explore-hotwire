@@ -1,3 +1,12 @@
+require "test_helper"
+
+class QuoteTest < ActiveSupport::TestCase
+  test "#by_created_at_desc" do
+    assert_equal ["Third quote", "Second quote", "First quote"],
+                 Quote.order_by_created_at_desc.pluck(:name)
+  end
+end
+
 # == Schema Information
 #
 # Table name: quotes
@@ -16,11 +25,3 @@
 #
 #  fk_rails_...  (company_id => companies.id)
 #
-require "test_helper"
-
-class QuoteTest < ActiveSupport::TestCase
-  test "#by_created_at_desc" do
-    assert_equal ["Third quote", "Second quote", "First quote"],
-                 Quote.order_by_created_at_desc.pluck(:name)
-  end
-end

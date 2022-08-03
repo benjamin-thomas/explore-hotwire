@@ -1,3 +1,11 @@
+require "test_helper"
+
+class BundleItemTest < ActiveSupport::TestCase
+  # test "the truth" do
+  #   assert true
+  # end
+end
+
 # == Schema Information
 #
 # Table name: bundle_items
@@ -19,10 +27,3 @@
 #
 #  fk_rails_...  (bundle_id => bundles.id)
 #
-require "test_helper"
-
-class BundleItemTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
-end

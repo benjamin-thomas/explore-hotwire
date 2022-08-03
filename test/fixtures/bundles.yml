@@ -1,3 +1,11 @@
+today:
+  quote: first
+  ship_on: <%= Date.today %>
+
+next_week:
+  quote: first
+  ship_on: <%= Date.today + 7 %>
+
 # == Schema Information
 #
 # Table name: bundles
@@ -17,11 +25,3 @@
 #
 #  fk_rails_...  (quote_id => quotes.id)
 #
-
-today:
-  quote: first
-  ship_on: <%= Date.today %>
-
-next_week:
-  quote: first
-  ship_on: <%= Date.today + 7 %>

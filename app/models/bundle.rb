@@ -1,3 +1,21 @@
+class Bundle < ApplicationRecord
+  belongs_to :quote
+  has_many :items, class_name: "BundleItem", dependent: :destroy
+
+  validates :ship_on, presence: true, uniqueness: { scope: :quote_id }
+
+  scope :order_by_ship_on_asc, -> { order(:ship_on) }
+
+  # @return [Bundle, nil]
+  def prev
+    quote
+      .bundles
+      .where(ship_on: ...ship_on)
+      .order_by_ship_on_asc
+      .last
+  end
+end
+
 # == Schema Information
 #
 # Table name: bundles
@@ -17,20 +35,3 @@
 #
 #  fk_rails_...  (quote_id => quotes.id)
 #
-class Bundle < ApplicationRecord
-  belongs_to :quote
-  has_many :items, class_name: "BundleItem", dependent: :destroy
-
-  validates :ship_on, presence: true, uniqueness: { scope: :quote_id }
-
-  scope :order_by_ship_on_asc, -> { order(:ship_on) }
-
-  # @return [Bundle, nil]
-  def prev
-    quote
-      .bundles
-      .where(ship_on: ...ship_on)
-      .order_by_ship_on_asc
-      .last
-  end
-end

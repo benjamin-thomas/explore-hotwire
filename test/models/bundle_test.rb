@@ -1,3 +1,18 @@
+require "test_helper"
+
+class BundleTest < ActiveSupport::TestCase
+  test "#prev returns the quote's previous date when it exists" do
+    assert_equal bundles(:today), bundles(:next_week).prev  end
+
+  test "#prev returns nil when the quote has no previous date" do
+    assert_nil bundles(:today).prev
+  end
+
+  test "#items" do
+    assert_equal 2, bundles(:today).items.count
+  end
+end
+
 # == Schema Information
 #
 # Table name: bundles
@@ -17,17 +32,3 @@
 #
 #  fk_rails_...  (quote_id => quotes.id)
 #
-require "test_helper"
-
-class BundleTest < ActiveSupport::TestCase
-  test "#prev returns the quote's previous date when it exists" do
-    assert_equal bundles(:today), bundles(:next_week).prev  end
-
-  test "#prev returns nil when the quote has no previous date" do
-    assert_nil bundles(:today).prev
-  end
-
-  test "#items" do
-    assert_equal 2, bundles(:today).items.count
-  end
-end

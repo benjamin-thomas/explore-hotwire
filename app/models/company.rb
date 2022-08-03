@@ -1,3 +1,10 @@
+class Company < ApplicationRecord
+  has_many :users, dependent: :destroy
+  has_many :quotes, dependent: :destroy
+
+  validates :name, presence: true
+end
+
 # == Schema Information
 #
 # Table name: companies
@@ -7,9 +14,3 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Company < ApplicationRecord
-  has_many :users, dependent: :destroy
-  has_many :quotes, dependent: :destroy
-
-  validates :name, presence: true
-end
