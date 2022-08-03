@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :quotes do
-    resources :bundles, shallow: true
+    resources :bundles, shallow: true, except: [:index, :show]
   end
 end
