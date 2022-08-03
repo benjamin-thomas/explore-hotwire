@@ -1,0 +1,48 @@
+# == Schema Information
+#
+# Table name: bundle_items
+#
+#  id          :bigint           not null, primary key
+#  maybe_descr :text
+#  name        :string           not null
+#  quantity    :integer          not null
+#  unit_price  :decimal(10, 2)   not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  bundle_id   :bigint           not null
+#
+# Indexes
+#
+#  index_bundle_items_on_bundle_id  (bundle_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (bundle_id => bundles.id)
+#
+room_today:
+  bundle: today
+  name: Meeting room
+  maybe_descr: A cosy meeting room for 10 people
+  quantity: 1
+  unit_price: 1000
+
+catering_today:
+  bundle: today
+  name: Meal tray
+  maybe_descr: Our delicious meal tray
+  quantity: 10
+  unit_price: 25
+
+room_next_week:
+  bundle: next_week
+  name: Meeting room
+  maybe_descr: A cosy meeting room for 10 people
+  quantity: 1
+  unit_price: 1000
+
+catering_next_week:
+  bundle: next_week
+  name: Meal tray
+  maybe_descr: Our delicious meal tray
+  quantity: 10
+  unit_price: 25

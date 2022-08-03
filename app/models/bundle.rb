@@ -19,6 +19,7 @@
 #
 class Bundle < ApplicationRecord
   belongs_to :quote
+  has_many :items, class_name: "BundleItem", dependent: :destroy
 
   validates :ship_on, presence: true, uniqueness: { scope: :quote_id }
 

@@ -26,4 +26,8 @@ class BundleTest < ActiveSupport::TestCase
   test "#prev returns nil when the quote has no previous date" do
     assert_nil bundles(:today).prev
   end
+
+  test "#items" do
+    assert_equal 2, bundles(:today).items.count
+  end
 end
