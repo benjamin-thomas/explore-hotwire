@@ -1,30 +1,32 @@
 <%= turbo_frame_tag bundle do %>
 
   <div class="bundle">
-    <div class="bundle__header">
-      <h2 class="bundle__title">
-        <%= l(bundle.ship_on, format: :long) %>
-      </h2>
+    <%= turbo_frame_tag "edit", bundle do %>
+      <div class="bundle__header">
+        <h2 class="bundle__title">
+          <%= l(bundle.ship_on, format: :long) %>
+        </h2>
 
-      <%
-        extra = {}
-        unless Rails.env.development?
-          extra = { form: { data: { turbo_confirm: "Are you sure?" } } }
-        end
-      %>
+        <%
+          extra = {}
+          unless Rails.env.development?
+            extra = { form: { data: { turbo_confirm: "Are you sure?" } } }
+          end
+        %>
 
-      <div class="bundle__actions">
-        <%= button_to "Delete",
-                      bundle_path(bundle),
-                      method: :delete,
-                      **extra,
+        <div class="bundle__actions">
+          <%= button_to "Delete",
+                        bundle_path(bundle),
+                        method: :delete,
+                        **extra,
+                        class: "btn btn--light" %>
+
+          <%= link_to "Edit",
+                      edit_bundle_path(bundle),
                       class: "btn btn--light" %>
-
-        <%= link_to "Edit",
-                    edit_bundle_path(bundle),
-                    class: "btn btn--light" %>
+        </div>
       </div>
-    </div>
+    <% end %>
 
     <div class="bundle__body">
       <div class="bundle-item bundle-item--header">

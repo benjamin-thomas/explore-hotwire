@@ -5,7 +5,7 @@
     <h1>Edit bundle</h1>
   </div>
 
-  <%= turbo_frame_tag @bundle do %>
+  <%= turbo_frame_tag "edit", @bundle do %>
     <%= render "form", bundle: @bundle, path: bundle_path(@bundle) %>
   <% end %>
 </main>
