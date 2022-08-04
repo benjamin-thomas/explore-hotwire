@@ -12,7 +12,11 @@ class BundleItemsController < ApplicationController
       return
     end
 
-    redirect_to_quote_path(@bundle_item.bundle.quote, "Bundle item saved successfully.")
+    notice = "Bundle item saved successfully."
+    respond_to do |fmt|
+      fmt.html { redirect_to_quote_path(@bundle_item.bundle.quote, notice) }
+      fmt.turbo_stream { flash.now[:notice] = notice }
+    end
   end
 
   def edit
@@ -27,15 +31,23 @@ class BundleItemsController < ApplicationController
       return
     end
 
-    redirect_to_quote_path(@bundle_item.bundle.quote, "Bundle item updated successfully.")
+    notice = "Bundle item updated successfully."
+    respond_to do |fmt|
+      fmt.html { redirect_to_quote_path(@bundle_item.bundle.quote, notice) }
+      fmt.turbo_stream { flash.now[:notice] = notice }
+    end
   end
 
   def destroy
     @bundle_item = find_bundle_item
-
     @bundle_item.destroy
 
-    redirect_to_quote_path(@bundle_item.bundle.quote, "Bundle item destroyed successfully.")
+    notice = "Bundle item destroyed successfully."
+    respond_to do |fmt|
+      fmt.html { redirect_to_quote_path(@bundle_item.bundle.quote, notice) }
+      fmt.turbo_stream { flash.now[:notice] = notice }
+    end
+
   end
 
   private
