@@ -7,7 +7,10 @@ class QuotesController < ApplicationController
   end
 
   def show
-    @bundles = @quote.bundles.order_by_ship_on_asc
+    @bundles = @quote
+                 .bundles
+                 .includes(:items)
+                 .order_by_ship_on_asc
   end
 
   def new

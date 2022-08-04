@@ -1,0 +1,7 @@
+<div class="container">
+  <div class="header">
+    <h1>Edit item for <%= l(@bundle_item.bundle.ship_on, format: :long) %></h1>
+  </div>
+
+  <%= render 'form', path: bundle_item_path(@bundle_item) %>
+</div>

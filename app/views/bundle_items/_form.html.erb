@@ -1,0 +1,28 @@
+<%= simple_form_for(@bundle_item, url: path,
+                    html: { class: "form bundle-item--form",
+                            autocomplete: "off" }) do |f| %>
+
+  <%= maybe_form_errors_for(@bundle_item) %>
+
+  <%= f.input :name, placeholder: "Name of the article",
+              input_html: { autofocus: true },
+              wrapper_html: { class: "bundle-item__name" } %>
+
+  <%= f.input :quantity, placeholder: "Quantity",
+              wrapper_html: { class: "bundle-item__quantity" } %>
+
+  <%= f.input :unit_price, placeholder: "Price",
+              wrapper_html: { class: "bundle-item__price" } %>
+
+  <%= f.input :maybe_descr,
+              placeholder: "Short description of the article (optional)",
+              wrapper_html: { class: "bundle-item__description" } %>
+
+  <div class="bundle-item__actions">
+    <%= link_to "Cancel",
+                quote_path(@bundle_item.bundle.quote),
+                class: "btn btn--light" %>
+
+    <%= f.submit class: "btn btn--secondary" %>
+  </div>
+<% end %>

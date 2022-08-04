@@ -1,0 +1,9 @@
+<div class="container">
+  <%= link_to sanitize("&larr; Back to quote"), quote_path(@bundle_item.bundle.quote) %>
+
+  <div class="header">
+    <h1>New item for <%= l(@bundle_item.bundle.ship_on, format: :long) %></h1>
+  </div>
+
+  <%= render 'form', path: items_for_bundle_path(@bundle_item.bundle) %>
+</div>

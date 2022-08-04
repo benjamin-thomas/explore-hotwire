@@ -1,0 +1,35 @@
+<div class="bundle-item">
+
+  <div class="bundle-item__name">
+    <%= bundle_item.name %>
+    <div class="bundle-item__description">
+      <%= simple_format bundle_item.maybe_descr %>
+    </div>
+  </div>
+
+  <div class="bundle-item__quantity_and_price">
+    <%= bundle_item.quantity %>
+    &times;
+    <%= number_to_currency bundle_item.unit_price %>
+  </div>
+
+  <div class="bundle-item__quantity">
+    <%= bundle_item.quantity %>
+  </div>
+
+  <div class="bundle-item__price">
+    <%= number_to_currency bundle_item.unit_price %>
+  </div>
+
+  <div class="bundle-item__actions">
+    <%= button_to "Delete",
+                  bundle_item_path(bundle_item),
+                  method: :delete,
+                  class: "btn btn--light" %>
+
+    <%= link_to "Edit",
+                edit_bundle_item_path(bundle_item),
+                class: "btn btn--light" %>
+  </div>
+
+</div>
