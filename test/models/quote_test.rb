@@ -5,6 +5,12 @@ class QuoteTest < ActiveSupport::TestCase
     assert_equal ["Third quote", "Second quote", "First quote"],
                  Quote.order_by_created_at_desc.pluck(:name)
   end
+
+  test "#total_price" do
+    # Fixtures: add `today` + `next week` bundles.
+    # 999.99 + (2 * 8.76) + (3 * 1.23) + (4 * 2.34) = 1030.56
+    assert_equal 1030.56, quotes(:first).total_price
+  end
 end
 
 # == Schema Information

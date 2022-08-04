@@ -1,4 +1,4 @@
-<main class="container">
+<main class="container mb-xxxxl">
   <%= link_to sanitize("&larr; Back to quotes"), quotes_path %>
 
   <div class="header">
@@ -17,3 +17,7 @@
     <%= render @bundles %>
   <% end %>
 </main>
+
+<div id="quote-total">
+  <%= render "quotes/total", quote: @quote %>
+</div>

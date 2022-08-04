@@ -2,6 +2,7 @@ require "application_system_test_case"
 
 class BundleItemsTest < ApplicationSystemTestCase
   include ApplicationHelper::Dom
+  include ActionView::Helpers::NumberHelper # number_to_currency
 
   setup do
     login_as users(:accountant)
@@ -26,6 +27,7 @@ class BundleItemsTest < ApplicationSystemTestCase
 
     assert_text "Animation"
     assert_text "$5.67"
+    assert_text number_to_currency(@quote.total_price)
   end
 
   test "update a bundle item" do
@@ -47,6 +49,7 @@ class BundleItemsTest < ApplicationSystemTestCase
     assert_text "$888.88"
     assert_text "Meeting office"
     assert_no_text "Meeting room"
+    assert_text number_to_currency(@quote.total_price)
   end
 
   test "destroy a bundle item" do
@@ -58,6 +61,7 @@ class BundleItemsTest < ApplicationSystemTestCase
     end
     assert_on_quote_page
     assert_no_text "Meeting room"
+    assert_text number_to_currency(@quote.total_price)
   end
 
   private

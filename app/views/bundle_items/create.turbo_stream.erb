@@ -1,6 +1,11 @@
 <%= turbo_stream.before dom_id_nested(@bundle_item.bundle, "new_bundle_item") do %>
   <%= render @bundle_item %>
 <% end %>
+
 <%= turbo_stream.update dom_id_nested(@bundle_item.bundle, "new_bundle_item"), "" %>
+
+<%= turbo_stream.update "quote-total" do %>
+  <%= render "quotes/total", quote: @bundle_item.bundle.quote %>
+<% end %>
 
 <%= turbo_stream_flash %>

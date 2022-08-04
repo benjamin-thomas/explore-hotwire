@@ -10,6 +10,9 @@
 @import "layouts/container";
 @import "layouts/header";
 
+// Utilities
+@import "utilities/margins";
+
 // Components
 @import "components/btn";
 @import "components/quote";
@@ -22,3 +25,4 @@
 @import "components/empty_state";
 @import "components/bundle";
 @import "components/bundle_item";
+@import "components/quote_total";

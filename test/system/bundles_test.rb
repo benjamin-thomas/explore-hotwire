@@ -1,6 +1,8 @@
 require "application_system_test_case"
 
 class BundlesTest < ApplicationSystemTestCase
+  include ActionView::Helpers::NumberHelper # number_to_currency
+
   setup do
     login_as users(:accountant)
 
@@ -48,5 +50,6 @@ class BundlesTest < ApplicationSystemTestCase
     end
 
     assert_no_text I18n.l(Date.today, format: :long)
+    assert_text number_to_currency(@quote.total_price)
   end
 end

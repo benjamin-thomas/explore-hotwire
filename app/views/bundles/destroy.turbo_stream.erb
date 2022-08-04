@@ -1,3 +1,7 @@
-<%#= turbo_stream.replace @bundle, "" %>
 <%= turbo_stream.remove @bundle %>
+
+<%= turbo_stream.update "quote-total" do %>
+  <%= render "quotes/total", quote: @bundle.quote %>
+<% end %>
+
 <%= turbo_stream_flash %>

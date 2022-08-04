@@ -129,6 +129,9 @@ a {
     .header {
       margin-bottom: var(--space-xl); } }
 
+.mb-xxxxl {
+  margin-bottom: var(--space-xxxxl); }
+
 .btn {
   display: inline-block;
   padding: var(--space-xxs) var(--space-m);
@@ -389,5 +392,24 @@ a {
           font-weight: bold;
           letter-spacing: 1px;
           text-transform: uppercase; } }
+
+.quote-total {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  font-size: var(--font-size-xl);
+  font-weight: bold;
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-large);
+  padding-top: var(--space-xs);
+  padding-bottom: var(--space-xs); }
+  @media (min-width: 50rem) {
+    .quote-total {
+      padding-top: var(--space-m);
+      padding-bottom: var(--space-m); } }
+  .quote-total__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; }
 
 /*# sourceMappingURL=main.css.map */

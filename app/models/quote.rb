@@ -7,6 +7,15 @@ class Quote < ApplicationRecord
   validates :name, presence: true
 
   scope :order_by_created_at_desc, -> { order(created_at: :desc) }
+
+  def total_price
+    #noinspection RailsParamDefResolve
+    BundleItem
+      .joins(bundle: :quote)
+      .where(quotes: { id: id })
+      .sum("quantity * unit_price")
+  end
+
 end
 
 # == Schema Information

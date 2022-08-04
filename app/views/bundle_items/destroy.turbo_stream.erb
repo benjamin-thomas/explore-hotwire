@@ -1,2 +1,7 @@
 <%= turbo_stream.remove dom_id_nested(@bundle_item.bundle, @bundle_item) %>
+
+<%= turbo_stream.update "quote-total" do %>
+  <%= render "quotes/total", quote: @bundle_item.bundle.quote %>
+<% end %>
+
 <%= turbo_stream_flash %>
