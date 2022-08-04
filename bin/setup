@@ -27,7 +27,7 @@ FileUtils.chdir APP_ROOT do
     system %Q[./manage/psql -d postgres --echo-all --command "SELECT pg_terminate_backend(pg_stat_activity.pid) FROM pg_stat_activity WHERE pg_stat_activity.datname = '#{db_name}' AND pid <> pg_backend_pid();"]
   end
 
-  puts "\n== Recreating the database and loading fixtures=="
+  puts "\n== Recreating the database and loading fixtures =="
   system "./bin/rails db:drop db:prepare db:fixtures:load"
 
   puts "\n== Removing old logs and tempfiles =="

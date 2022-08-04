@@ -28,7 +28,7 @@ class BundlesTest < ApplicationSystemTestCase
     assert_selector "h1", text: "First quote"
 
     within id: dom_id(@bundle) do
-      click_on "Edit"
+      click_on "Edit", match: :first
     end
 
     assert_selector "h1", text: "First quote"
@@ -43,7 +43,7 @@ class BundlesTest < ApplicationSystemTestCase
 
     accept_confirm do
       within id: dom_id(@bundle) do
-        click_on "Delete"
+        click_on "Delete", match: :first
       end
     end
 
