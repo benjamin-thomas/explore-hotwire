@@ -4,14 +4,14 @@
 
   <%= maybe_form_errors_for(@bundle_item) %>
 
-  <%= f.input :name, placeholder: "Name of the article",
+  <%= f.input :name,
               input_html: { autofocus: true },
               wrapper_html: { class: "bundle-item__name" } %>
 
-  <%= f.input :quantity, placeholder: "Quantity",
+  <%= f.input :quantity,
               wrapper_html: { class: "bundle-item__quantity" } %>
 
-  <%= f.input :unit_price, placeholder: "Price",
+  <%= f.input :unit_price,
               wrapper_html: { class: "bundle-item__price" } %>
 
   <%= f.input :maybe_descr,

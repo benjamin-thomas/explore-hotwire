@@ -3,11 +3,17 @@ en:
     placeholders:
       quote:
         name: Name of your quote
+      bundle_item:
+        name: Name of the article
+        quantity: Quantity
+        unit_price: Price
     labels:
       quote:
         name: Name
       bundle:
         ship_on: Ship on
+      bundle_item:
+        unit_price: Price
 
   helpers:
     submit:
@@ -17,6 +23,9 @@ en:
       bundle:
         create: Create bundle
         update: Update bundle
+      bundle_item:
+        create: Create item
+        update: Update item
 
     "yes": 'Yes'
     "no": 'No'
