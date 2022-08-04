@@ -38,6 +38,7 @@
 
       <div class="bundle__footer">
         <%= link_to "Add item", new_item_for_bundle_path(bundle),
+                    data: { turbo_frame: "_top" },
                     class: "btn btn--primary" %>
       </div>
     </div>
